@@ -61,6 +61,15 @@ class App extends Component {
         this.toggleGuestPropertyAt("isConfirmed", index);
     }
 
+    removeGuestAt = index => {
+        this.setState({
+            guests: [
+                ...this.state.guests.slice(0, index), //returns a smaller new array. 
+                ...this.state.guests.slice(index + 1), //this is creating new arrays to have the guest removed
+            ]
+        })
+    }
+
     toggleEditingAt = index => {
         this.toggleGuestPropertyAt("isEditing", index);
     }
@@ -96,18 +105,7 @@ class App extends Component {
     render() {
             return (
             <div className="App" id="root">
-                <header>
-                <h1>RSVP</h1>
-                <p>A Treehouse App</p>
-                <form onSubmit={ this.newGuestSubmitHandler } >
-                    <input 
-                        type="text" 
-                        onChange={ this.handleNameInput }
-                        value={ this.state.pendingGuest }
-                        placeholder="Invite Someone" />
-                    <button type="submit" name="submit" value="submit">Submit</button>
-                </form>
-                </header>
+                <Header />
                 <div className="main">
                   <div>
                     <h2>Invitees</h2>
@@ -142,6 +140,8 @@ class App extends Component {
                     toggleEditingAt={ this.toggleEditingAt }
                     setNameAt={ this.setNameAt }
                     isFiltered={ this.state.isFiltered }
+                    removeGuestAt={ this.removeGuestAt }
+
                     />
 
 

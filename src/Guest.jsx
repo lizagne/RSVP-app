@@ -21,7 +21,7 @@ const Guest = props => (
 			{ props.isEditing ? "save" : "edit" } {/*Ternary operator here to change the word in the button to save if it's edited*/}
 
 		</button>
-		<button>remove</button>
+		<button onClick={ props.handleRemove }>remove</button> {/*this is binding the function to the remove button's event handler*/}
 	</li>	
 );
 
