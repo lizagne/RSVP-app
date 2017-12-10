@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 // import logo from './logo.svg';
 import './App.css';
-import GuestList from "./GuestList";
+
+import Header from "./Header";
+import MainContent from "./MainContent";
 
 class App extends Component {
 
@@ -105,47 +107,24 @@ class App extends Component {
     render() {
             return (
             <div className="App" id="root">
-                <Header />
-                <div className="main">
-                  <div>
-                    <h2>Invitees</h2>
-                    <label>
-                      <input 
-                        type="checkbox" 
-                        onChange={ this.toggleFilter }
-                        checked={ this.state.isFiltered }/> 
-                        Hide those who haven't responded
-                    </label>
-                  </div>
-                  <table className="counter">
-                    <tbody>
-                      <tr>
-                        <td>Attending:</td>
-                        <td>2</td>
-                      </tr>
-                      <tr>
-                        <td>Unconfirmed:</td>
-                        <td>1</td>
-                      </tr>
-                      <tr>
-                        <td>Total:</td>
-                        <td>3</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  
-                  <GuestList 
+                <Header 
+                    newGuestSubmitHandler= { this.newGuestSubmitHandler }
+                    pendingGuest={ this.state.pendingGuest }
+                    handleNameInput={ this.handleNameInput }
+                />
+                <MainContent 
+                    toggleFiler={ this.toggleFilter }
+                    isFiltered={ this.state.isFiltered }
+                    totalInvited={ this.totalInvited }
+                    numberAttending={ this.numberAttending }
+                    numberUnconfirmed={ this.numberUnconfirmed }
+                    guests={ this.state.guests }
                     toggleConfirmationAt={ this.toggleConfirmationAt }
-                    guests={this.state.guests} 
                     toggleEditingAt={ this.toggleEditingAt }
                     setNameAt={ this.setNameAt }
-                    isFiltered={ this.state.isFiltered }
                     removeGuestAt={ this.removeGuestAt }
-
-                    />
-
-
-                </div>
+                    pendingGuest={ this.state.pendingGuest }
+                />
             </div>
             );
         }
