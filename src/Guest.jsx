@@ -1,9 +1,14 @@
 import React from "react";
+import GuestName from "./GuestName";
 
 const Guest = props => (
 		
 	<li className="responded">
-		<span>{ props.name }</span>
+		<GuestName 
+			isEditing={ props.isEditing }
+			handleNameEdits={ e=> props.setName(e.target.value) }>
+			{ props.name }
+		</GuestName>
 		<label>
 			<input 
 				type="checkbox" 
@@ -11,7 +16,11 @@ const Guest = props => (
 				onChange={ props.handleConfirmation }
 			/> Confirmed
 		</label>
-		<button>edit</button>
+		<button onClick={ props.handleToggleEditing }>
+
+			{ props.isEditing ? "save" : "edit" } {/*Ternary operator here to change the word in the button to save if it's edited*/}
+
+		</button>
 		<button>remove</button>
 	</li>	
 );

@@ -10,30 +10,52 @@ class App extends Component {
       {
         name: 'Treasure',
         isConfirmed: false,
+        isEditing: false,
       },
        {
         name: 'Nick',
         isConfirmed: true,
+        isEditing: false,
       },
       {
         name: 'Matt K',
         isConfirmed: true,
+        isEditing: true,
       },
     ]
   }
 
-  toggleConfirmationAt = indexToChange => 
-    this.setState({
-        guests: this.state.guests.map((guest, index) => {
-            if (index === indexToChange) {
-              return {
-                ...guest,
-                isConfirmed: !guest.isConfirmed
-              };
-            }
-            return guest;
+    toggleGuestPropertyAt = (property, indexToChange) => 
+        this.setState({
+            guests: this.state.guests.map((guest, index) => {
+                if (index === indexToChange) {
+                  return {
+                    ...guest,
+                    [property]: !guest[property]
+                  };
+                }
+                return guest;
         })
     });
+
+    setNameAt = (name, indexToChange) => 
+        this.setState({
+            guests: this.state.guests.map((guest, index) => {
+                if (index === indexToChange) {
+                  return {
+                    ...guest,
+                    name,
+                  };
+                }
+                return guest;
+        })
+    });    
+
+    toggleConfirmationAt = index =>
+        this.toggleGuestPropertyAt("isConfirmed", index);
+
+    toggleEditingAt = index =>
+        this.toggleGuestPropertyAt("isEditing", index);
 
     getTotalInvited = () => this.state.guests.length;
     //getAttendingGuests = () => 
@@ -76,7 +98,10 @@ class App extends Component {
                   
                   <GuestList 
                     toggleConfirmationAt={ this.toggleConfirmationAt }
-                    guests={this.state.guests} />
+                    guests={this.state.guests} 
+                    toggleEditingAt={ this.toggleEditingAt }
+                    setNameAt={ this.setNameAt }
+                    />
 
 
                 </div>

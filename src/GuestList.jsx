@@ -9,7 +9,10 @@ const GuestList = props =>
 	  			key={ index } 
 	  			name={ guest.name } 
 	  			isConfirmed={ guest.isConfirmed } 
+	  			isEditing={ guest.isEditing }
 	  			handleConfirmation={ () => props.toggleConfirmationAt(index) } 
+	  			handleToggleEditing={ () => props.toggleEditingAt(index) }
+	  			setName={ text => props.setNameAt(text, index)}
 	  		/>
 		)}
 	</ul>;
