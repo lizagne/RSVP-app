@@ -5,4 +5,4 @@ Working through a tutorial from Treehouse. This helped me to understand better t
 
 ## Demo of RSVP app in gif format
 
-![Demo] (https://user-images.githubusercontent.com/26763021/34587165-053a9ae2-f19f-11e7-8025-da928e3efddf.gif)
+![Demo](https://user-images.githubusercontent.com/26763021/34587165-053a9ae2-f19f-11e7-8025-da928e3efddf.gif)
